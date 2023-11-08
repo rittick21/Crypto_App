@@ -1,0 +1,20 @@
+.errorpage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 80vh;
+    margin: auto;
+}
+
+.errorpage > p, i{
+    font: 600 1.7rem cursive;
+}
+.errorpage > p{
+    color: rgb(37, 105, 208);
+}
+.errorpage > i{
+    color: rgb(0, 0, 0);
+    align-items: center;
+    margin: 0 1rem;
+}
