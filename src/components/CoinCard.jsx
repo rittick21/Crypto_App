@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const CoinCard = ({ id, name, image, symbol, price, currencySymbol = "₹" }) => {
     return (
-        <Link to={`/coins/${id}`}>
+        <Link to={`/coin/${id}`}>
             <VStack
                 w={"52"}
                 shadow={"lg"}

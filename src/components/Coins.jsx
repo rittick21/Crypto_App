@@ -8,14 +8,15 @@ import CoinCard from './CoinCard';
 
 const Coins = () => {
 
-  const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [currency, setCurrency] = useState("inr");
+  const [coins, setCoins] = useState([]); //Coins fetching
+  const [loading, setLoading] = useState(true); //Loading
+  const [error, setError] = useState(false); //Error
+  const [page, setPage] = useState(1); //Pagination
+  const [currency, setCurrency] = useState("inr"); //Currency 
 
   const currencySymbol = currency === "inr" ? "₹" : currency === "eur" ? "€" : "$"
 
+  //Fetching data
   useEffect(() => {
     const fetchCoins = async () => {
       try {
@@ -31,19 +32,22 @@ const Coins = () => {
     fetchCoins();
   }, [currency, page]);
 
+  //Errorpage rendering
   if (error) {
     return (
       <Errorpage message={"Error while fetching Coins"} />
     )
   }
 
+  //Changing page function
   const changePage = (page) => {
     setPage(page);
     setLoading(true);
   }
 
-  const btns = new Array(132).fill(1);
+  const btns = new Array(132).fill(1); //Below buttons array variable
 
+  //If not error then...
   return (
     <Container maxW={"container.xl"}>
       {loading ? <Loader /> : <>
@@ -54,7 +58,7 @@ const Coins = () => {
             <Radio value={"usd"}>$ USD</Radio>
           </HStack>
         </RadioGroup>
-        <HStack wrap={"wrap"}>
+        <HStack wrap={"wrap"} justifyContent={"space-evenly"}>
           {
             coins.map((i) => {
               return (
@@ -87,6 +91,7 @@ const Coins = () => {
           {btns.map((item, index) => {
             return (
               <Button
+                key={index}
                 bgColor={"blackAlpha.900"}
                 color={"white"}
                 onClick={() => {

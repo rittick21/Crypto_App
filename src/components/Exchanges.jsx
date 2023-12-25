@@ -8,9 +8,9 @@ import Errorpage from './Errorpage';
 
 const Exchanges = () => {
 
-  const [exchanges, setExchanges] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [exchanges, setExchanges] = useState([]); //Exchange fetching
+  const [loading, setLoading] = useState(true); //Loading 
+  const [error, setError] = useState(false); //Error 
 
   useEffect(() => {
     const fetchExchanges = async () => {
@@ -27,16 +27,18 @@ const Exchanges = () => {
     fetchExchanges();
   }, []);
 
+  //Errorpage Code
   if(error){
     return(
       <Errorpage message = {"Error while fetching Exchanges"}/>
     )
   }
 
+  //If not error then...
   return (
     <Container maxW={"container.xl"}>
       {loading ? <Loader /> : <>
-        <HStack wrap={"wrap"}>
+        <HStack wrap={"wrap"} justifyContent={"space-evenly"}>
           {
             exchanges.map((i) => {
               return (
