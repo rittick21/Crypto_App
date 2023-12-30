@@ -6,6 +6,7 @@ import Coins from './components/Coins'
 import Exchanges from './components/Exchanges'
 import Coindetails from './components/Coindetails'
 import Errorpage from './components/Errorpage'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
         <Route path={'/coin/:id'} element={<Coindetails/>}/>
         <Route path={'*'} element={<Errorpage/>}/>
       </Routes>
+
+      <Footer/>
     </Router>
   )
 }

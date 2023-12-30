@@ -21,7 +21,7 @@ const Coindetails = () => {
 
   const currencySymbol = currency === "inr" ? "₹" : currency === "eur" ? "€" : "$"
 
-  const btns = ["24h", "7d", "14d", "30d", "60d", "200d", "365d", "max"];
+  const btns = ["24h", "7d", "14d", "30d", "60d", "200d", "1y", "max"];
 
   const switchChartStats = (key) => {
     switch (key) {
@@ -55,7 +55,7 @@ const Coindetails = () => {
         setLoading(true);
         break;
 
-      case "365d":
+      case "1y":
         setDays("365d");
         setLoading(true);
         break;
@@ -106,7 +106,7 @@ const Coindetails = () => {
             <Chart arr={chartArray} currency={currencySymbol} days={days} />
           </Box>
 
-          <HStack p={"4"} wrap={"wrap"}>
+          <HStack p={"4"} overflowX={"auto"}>
             {
               btns.map((i) => {
                 return <Button key={i} onClick={() => { switchChartStats(i) }}>
@@ -158,6 +158,8 @@ const Coindetails = () => {
             <CustomBar
               high={`${currencySymbol} ${coin.market_data.high_24h[currency]}`}
               low={`${currencySymbol} ${coin.market_data.low_24h[currency]}`}
+              highValue = {coin.market_data.high_24h[currency]}
+              lowValue = {coin.market_data.low_24h[currency]}
             />
             <Box
               w={"full"}
