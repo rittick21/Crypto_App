@@ -75,6 +75,7 @@ const Coins = () => {
             })
           }
         </HStack>
+
         <HStack
           p={"8"}
           w={"125px"}
